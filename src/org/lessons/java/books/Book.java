@@ -8,11 +8,23 @@ public class Book {
     private String publisher;
 
     // CONSTRUCTOR
-    public Book(String title, int pages, String author, String publisher) {
-        this.title = title;
-        this.pages = pages;
-        this.author = author;
-        this.publisher = publisher;
+    public Book(String title, int pages, String author, String publisher) throws RuntimeException {
+        if (title != null && !title.isBlank()) this.title = title;
+        else {
+            throw new IllegalArgumentException();
+        }
+        if (pages > 0) this.pages = pages;
+        else {
+            throw new NumberFormatException();
+        }
+        if (author != null && !author.isBlank()) this.author = author;
+        else {
+            throw new IllegalArgumentException();
+        }
+        if (publisher != null && !publisher.isBlank()) this.publisher = publisher;
+        else {
+            throw new IllegalArgumentException();
+        }
     }
 
     // GETTERS & SETTERS
@@ -46,5 +58,15 @@ public class Book {
 
     public void setPublisher(String publisher) {
         this.publisher = publisher;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "title='" + title + '\'' +
+                ", pages=" + pages +
+                ", author='" + author + '\'' +
+                ", publisher='" + publisher + '\'' +
+                '}';
     }
 }
