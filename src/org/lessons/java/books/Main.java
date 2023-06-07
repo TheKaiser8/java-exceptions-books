@@ -23,8 +23,13 @@ public class Main {
                     System.out.print("Titolo: ");
                     String title = scan.nextLine();
                     // chiedo pagine
-                    System.out.print("Numero di pagine: ");
-                    int pages = Integer.parseInt(scan.nextLine());
+                    int pages = 0;
+                    try {
+                        System.out.print("Numero di pagine: ");
+                        pages = Integer.parseInt(scan.nextLine());
+                    } catch (NumberFormatException e) {
+                        // catch senza istruzioni solamente in casi eccezionali e controllati
+                    }
                     // chiedo autore
                     System.out.print("Autore: ");
                     String author = scan.nextLine();
