@@ -8,22 +8,22 @@ public class Book {
     private String publisher;
 
     // CONSTRUCTOR
-    public Book(String title, int pages, String author, String publisher) throws RuntimeException {
+    public Book(String title, int pages, String author, String publisher) throws IllegalArgumentException {
         if (title != null && !title.isBlank()) this.title = title;
         else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Il titolo è obbligatorio, non può essere vuoto.");
         }
         if (pages > 0) this.pages = pages;
         else {
-            throw new NumberFormatException();
+            throw new IllegalArgumentException("Il numero di pagine deve essere maggiore di 0.");
         }
         if (author != null && !author.isBlank()) this.author = author;
         else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("L'autore è obbligatorio, non può essere vuoto.");
         }
         if (publisher != null && !publisher.isBlank()) this.publisher = publisher;
         else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("L'editore è obbligatorio, non può essere vuoto.");
         }
     }
 
@@ -33,7 +33,10 @@ public class Book {
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        if (!title.isBlank()) this.title = title;
+        else {
+            throw new IllegalArgumentException("Il titolo è obbligatorio, non può essere vuoto.");
+        }
     }
 
     public int getPages() {
@@ -41,7 +44,10 @@ public class Book {
     }
 
     public void setPages(int pages) {
-        this.pages = pages;
+        if (pages > 0) this.pages = pages;
+        else {
+            throw new NumberFormatException("Il numero di pagine deve essere maggiore di 0.");
+        }
     }
 
     public String getAuthor() {
@@ -49,7 +55,10 @@ public class Book {
     }
 
     public void setAuthor(String author) {
-        this.author = author;
+        if (!author.isBlank()) this.author = author;
+        else {
+            throw new IllegalArgumentException("L'autore è obbligatorio, non può essere vuoto.");
+        }
     }
 
     public String getPublisher() {
@@ -57,7 +66,10 @@ public class Book {
     }
 
     public void setPublisher(String publisher) {
-        this.publisher = publisher;
+        if (!publisher.isBlank()) this.publisher = publisher;
+        else {
+            throw new IllegalArgumentException("L'editore è obbligatorio, non può essere vuoto.");
+        }
     }
 
     @Override

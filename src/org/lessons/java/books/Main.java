@@ -36,7 +36,7 @@ public class Main {
                     book = new Book(title, pages, author, publisher);
                     validBook = true;
                 } catch (IllegalArgumentException e) {
-                    System.out.println("Input non valido. I dati sono obbligatori e le pagine devono essere maggiori di 0");
+                    System.out.println(e.getMessage());
                 }
             } while (!validBook);
 
